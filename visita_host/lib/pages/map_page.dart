@@ -6,7 +6,7 @@ import "package:latlong2/latlong.dart";
 import 'package:flutter_map/flutter_map.dart'; // Suitable for most situations
 import 'package:flutter_map/plugin_api.dart'; // Only import if required functionality is not exposed by default
 import 'package:geolocator/geolocator.dart';
-import 'package:visita_host/pages/book_host.dart';
+
 import 'package:visita_host/pages/host_detail.dart';
 
 class GetHost extends StatefulWidget {

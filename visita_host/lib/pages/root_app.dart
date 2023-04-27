@@ -11,9 +11,11 @@ import 'package:visita_host/ui/auth/authentication_bloc.dart';
 import 'package:visita_host/ui/auth/welcome/welcome_screen.dart';
 import 'package:flutter_icons_null_safety/flutter_icons_null_safety.dart';
 import 'package:visita_host/theme/colors.dart';
-import 'package:visita_host/pages/map_page.dart';
+//import 'package:visita_host/pages/map_page.dart';
 import 'package:visita_host/pages/profile_page.dart';
-// import 'package:travel_app/pages/social_page.dart';
+
+//Add Facility
+import 'package:visita_host/pages/add_facility_details.dart';
 
 import 'dart:math' as math;
 
@@ -66,8 +68,9 @@ class _RootAppState extends State<RootApp> {
         Center(
           child: Text("Upload"),
         ),
-        GetHost(),
-        ProfilePage()
+        //GetHost(),
+        FacilityDetails(),
+        ProfilePage(),
       ],
     );
   }
