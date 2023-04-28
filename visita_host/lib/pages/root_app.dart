@@ -155,7 +155,7 @@ class _RootAppState extends State<RootApp> {
                   onTap: () {
                     setState(() {
                       activeTab = 4;
-                      // context.read<AuthenticationBloc>().add(LogoutEvent());
+                      context.read<AuthenticationBloc>().add(LogoutEvent());
                     });
                   },
                   child: Icon(
