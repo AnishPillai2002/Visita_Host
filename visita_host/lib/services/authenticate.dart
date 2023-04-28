@@ -176,7 +176,7 @@ class FireStoreUtils {
       Uri.parse("http://192.168.137.1:4567/api/v1/users/client/"),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode(
-          {"email": email, "name": displayName, "section": "client", "id": id}),
+          {"email": email, "name": displayName, "section": "host", "id": id}),
     );
     print(response.body);
     String firstName = displayName;
