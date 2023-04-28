@@ -2,12 +2,14 @@ import 'dart:convert';
 import 'package:walletconnect_dart/walletconnect_dart.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_icons_null_safety/flutter_icons_null_safety.dart';
 import 'package:visita_host/theme/colors.dart';
+import 'package:visita_host/ui/auth/authentication_bloc.dart';
 
 class ProfilePage extends StatefulWidget {
   Function setMetaAddress;
@@ -118,6 +120,17 @@ class _ProfilePageState extends State<ProfilePage> {
             const Text("Profile"),
           ],
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.read<AuthenticationBloc>().add(LogoutEvent());
+            },
+            icon: Icon(
+              Icons.logout,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
 
       // appBar: PreferredSize(
