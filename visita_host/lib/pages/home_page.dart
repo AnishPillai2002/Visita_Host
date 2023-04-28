@@ -1,15 +1,28 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:visita_host/model/recommended_places_model.dart';
 import 'package:visita_host/widgets/location_card.dart';
 import 'package:visita_host/widgets/nearby_places.dart';
+import 'package:http/http.dart' as http;
 import 'package:visita_host/widgets/recommended_places.dart';
 import 'package:visita_host/widgets/tourist_places.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<RecommendedPlaceModel>? recommended;
+
+  @override
   Widget build(BuildContext context) {
+    User? firebaseUser = FirebaseAuth.instance.currentUser;
     return Scaffold(
       appBar: AppBar(
         systemOverlayStyle: const SystemUiOverlayStyle(
@@ -28,7 +41,7 @@ class HomePage extends StatelessWidget {
           children: [
             const Text("Good Morning"),
             Text(
-              "Anish ",
+              "${firebaseUser!.displayName}",
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ],
