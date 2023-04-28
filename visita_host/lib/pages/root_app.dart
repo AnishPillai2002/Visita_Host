@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:visita_host/constants.dart';
 import 'package:visita_host/model/user.dart';
 import 'package:visita_host/pages/home_page.dart';
+import 'package:visita_host/pages/map_page.dart';
 import 'package:visita_host/pages/social_page.dart';
 import 'package:visita_host/pages/uploadImage.dart';
 import 'package:visita_host/services/helper.dart';
@@ -72,10 +73,7 @@ class _RootAppState extends State<RootApp> {
       children: [
         HomePage(),
         SocialPage(),
-        Center(
-          child: Text("Upload"),
-        ),
-        //GetHost(),
+        // GetHost(),
         FacilityDetails(),
         ProfilePage(setMetaAddress: setMetaAddress),
       ],
@@ -85,7 +83,7 @@ class _RootAppState extends State<RootApp> {
   Widget getFooter() {
     return Container(
       width: double.infinity,
-      height: 90,
+      height: 65,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -103,68 +101,54 @@ class _RootAppState extends State<RootApp> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      activeTab = 0;
-                    });
-                  },
-                  child: Icon(
-                    Feather.home,
-                    size: 25,
-                    color: activeTab == 0 ? primary : black,
-                  ),
-                ),
-                SizedBox(
-                  width: 55,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      activeTab = 1;
-                    });
-                  },
-                  child: Icon(
-                    Icons.people_alt,
-                    size: 25,
-                    color: activeTab == 1 ? primary : black,
-                  ),
-                ),
-              ],
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  activeTab = 0;
+                });
+              },
+              child: Icon(
+                Feather.home,
+                size: 25,
+                color: activeTab == 0 ? primary : black,
+              ),
             ),
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      activeTab = 3;
-                    });
-                  },
-                  child: Icon(
-                    Icons.map,
-                    size: 25,
-                    color: activeTab == 3 ? primary : black,
-                  ),
-                ),
-                SizedBox(
-                  width: 55,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      activeTab = 4;
-                      // context.read<AuthenticationBloc>().add(LogoutEvent());
-                    });
-                  },
-                  child: Icon(
-                    MaterialIcons.account_circle,
-                    size: 28,
-                    color: activeTab == 4 ? primary : black,
-                  ),
-                ),
-              ],
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  activeTab = 1;
+                });
+              },
+              child: Icon(
+                Icons.people_alt,
+                size: 25,
+                color: activeTab == 1 ? primary : black,
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  activeTab = 2;
+                });
+              },
+              child: Icon(
+                Icons.map,
+                size: 25,
+                color: activeTab == 2 ? primary : black,
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  activeTab = 3;
+                  // context.read<AuthenticationBloc>().add(LogoutEvent());
+                });
+              },
+              child: Icon(
+                MaterialIcons.account_circle,
+                size: 28,
+                color: activeTab == 3 ? primary : black,
+              ),
             )
           ],
         ),
