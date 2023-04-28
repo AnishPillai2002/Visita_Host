@@ -249,6 +249,38 @@ class _FacilityDetailsState extends State<FacilityDetails> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(right: 40.0, left: 40.0, bottom: 20),
+                child: ElevatedButton(
+                  child: const Text(
+                    'Submit',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    fixedSize:
+                        Size.fromWidth(MediaQuery.of(context).size.width / 1.5),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    backgroundColor: Color.fromARGB(255, 129, 185, 231),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                      side: const BorderSide(
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    //Define the Function
+                  },
+                ),
+              ),
             ],
           ),
         ),
