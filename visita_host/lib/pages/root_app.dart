@@ -59,8 +59,8 @@ class _RootAppState extends State<RootApp> {
       },
       child: Scaffold(
         bottomNavigationBar: getFooter(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: getFloatingButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        floatingActionButton: activeTab == 1 ? getFloatingButton() : null,
         body: getBody(),
       ),
     );
