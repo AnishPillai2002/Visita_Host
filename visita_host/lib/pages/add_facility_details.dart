@@ -72,27 +72,32 @@ class _FacilityDetailsState extends State<FacilityDetails> {
         try {
           print("Uploading Faclities");
           var response = await http.post(
-              Uri.parse("http://192.168.137.1:4567/api/v1/facilities/"),
+              Uri.parse("https://visita-api.onrender.com/api/v1/facilities/"),
               headers: {"Content-Type": "application/json"},
               body: jsonEncode({
                 "id": firebaseUser!.uid,
                 "accommodation": accomodation.text,
                 "location": location.text,
-                "facilites": facilities.text,
-                "nameofHost": nameofHost.text,
+                "facility": facilities.text,
+                "hostName": nameofHost.text,
                 "phone": phone.text,
+                "price": price.text,
                 "postedBy": firebaseUser.displayName,
-                "userURL": firebaseUser.photoURL
+                "userURL": firebaseUser.photoURL,
+                "lat": position.latitude.toString(),
+                "long": position.longitude.toString(),
               }));
           print(response.body);
           String id = jsonDecode(response.body)['_id'];
 
           print("Sending second resp");
 
-          var request = http.MultipartRequest("POST",
-              Uri.parse("http://192.168.137.1:4567/api/v1/facilities/$id"));
+          var request = http.MultipartRequest(
+              "POST",
+              Uri.parse(
+                  "https://visita-api.onrender.com/api/v1/facilities/$id"));
           request.files.add(http.MultipartFile.fromBytes(
-              'picture', File(imageFile!.path).readAsBytesSync(),
+              'image', File(imageFile!.path).readAsBytesSync(),
               filename: imageFile!.path));
           var res = await request.send();
           final respStr = await res.stream.bytesToString();
@@ -431,18 +436,17 @@ class _FacilityDetailsState extends State<FacilityDetails> {
                         ScaffoldMessenger.of(context).showSnackBar(s);
                         return;
                       }
-                      setState(() {
-                        nameofHost.text = "";
-                        facilities.text = "";
-                        phone.text = "";
-                        price.text = "";
-                        location.text = "";
-                        phone.text = "";
-                      });
-                      setHost(imageFile);
-                      setState(() {
-                        imageFile = null;
-                      });
+
+                      setHost(imageFile).then((value) => setState(() {
+                            accomodation.text = "";
+                            nameofHost.text = "";
+                            facilities.text = "";
+                            phone.text = "";
+                            price.text = "";
+                            location.text = "";
+                            phone.text = "";
+                            imageFile = null;
+                          }));
                     },
                   ),
                   SizedBox(

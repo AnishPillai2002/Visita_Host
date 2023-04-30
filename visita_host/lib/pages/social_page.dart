@@ -44,8 +44,8 @@ class _SocialPageState extends State<SocialPage> {
 
 //To fetch post from API
   fetchPosts() async {
-    var response =
-        await http.get(Uri.parse("http://192.168.137.1:4567/api/v1/posts/"));
+    var response = await http
+        .get(Uri.parse("https://visita-api.onrender.com/api/v1/posts/"));
     var posts = jsonDecode(response.body);
     setState(() {
       postsList = posts["posts"];
@@ -202,7 +202,8 @@ class _SocialPageState extends State<SocialPage> {
                                               CircleAvatar(
                                                 backgroundImage: NetworkImage(
                                                     postsList[index]
-                                                        ['userURL']),
+                                                            ['userURL'] ??
+                                                        "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"),
                                               ),
                                               SizedBox(
                                                 width: 12,
